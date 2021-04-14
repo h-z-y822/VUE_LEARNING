@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>filmMobile</title>
+    <!-- 0.先引入vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  </head>
+  <body>
+    <!--
+      1.做界面
+      1.1要求：只能有一个唯一的元素
+      1.2用{{变量}}语法在HTML中标记处可能变化的位置-类似于模板字符串中的${变量}
+      本例中：只有span的内容可能会变
+    -->
+    <div id="app">
+      <button @click="minus">-</button>
+      <span>{{n}}</span>
+      <button @click="add">+</button>
+    </div>
+  </body>
+
+  <script>
+    //2.定义一个对象，其中保存页面上所需的所有变量
+    //data中的变量名应该和htmlzhong {{}}里的变量名保持一致，变量个数通常也会保持一致的
+    //本例中：html中只需要1个变量n
+    //一个功能中所有的变量都要写在data对象中
+    let data ={ n: 0 };
+    //3.创建一个Vue类型的子对象，将数据对象data和页面元素区域div#app绑定起来！
+   var vm= new Vue({
+      // ：左边标识符el、data、methods等都不能随便改名
+      el: "#app", //找到HTML中id为app的区域
+      data:{
+          n:0
+      } , //将数据对象包含进Vue对象中来
+
+      //将页面上需要的事件函数都要写在methods的成员中
+      methods: {
+        //本例中只有2个方法：add、minus
+        //在事件处理函数中，只要专心处理数据即可，Vue会自动保持内容同步
+        //在方法中，可用this.访问当前对象data中的变量
+        add() {
+          this.n++; //等同于this.data.n++
+        },
+        minus() {
+          if (this.n > 0) this.n--;
+        },
+      },
+    });
+  </script>
+</html>

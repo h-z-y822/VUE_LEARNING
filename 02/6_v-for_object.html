@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+        <div id="app">
+                <ul>
+                    <li v-for="(val,k) of teacher" :key="k">
+                        {{k}}:{{val}}
+                    </li>
+                </ul>
+            </div>
+        
+            <script>
+               let vm=new Vue({
+                   el:"#app",
+                   data:{
+                       teacher:{
+                           name:"东东",
+                           age:40,
+                           addr:"宁波江北风华路"
+                          
+                      }
+                   }
+               })
+            </script>
+            
+</body>
+</html>
